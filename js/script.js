@@ -67,7 +67,7 @@ const posts = [
 
 /* ELEMENTS */
 const main = document.querySelector('.posts-list');
-const btnLike = document.querySelector('.like-button');
+
 
 posts.forEach((post) =>{
 const newPost = document.createElement('div')
@@ -102,13 +102,14 @@ newPost.innerHTML += `<div class="post">
 </div>            
 </div>`
 newPost._postID = `${post.id}`
-btnLike.addEventListener('click', function(){
-  console.log('ciao');
-});
+console.log(newPost._postID);
+
 main.append(newPost)
 })
 
+const btnLike = document.querySelector('.like-button');
+btnLike.addEventListener('click', likePlus)
 
-// function likePlus(){
-//   newPost.likes++;
-// }
+function likePlus(){
+  console.log(newPost._postID);
+}
