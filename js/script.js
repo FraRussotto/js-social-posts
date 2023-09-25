@@ -93,11 +93,12 @@ const main = document.querySelector('.posts-list');
 // </div>            
 // </div>`
 
-// Rendiamo dinamica la creazione dei psot attraverso gli oggetti dell'array fornito
+// Rendiamo dinamica la creazione dei psot attraverso gli oggetti dell'array fornito creando un ciclo che ad ogni passaggio, creare un nuovo post che va ad inserire nel main.
 
 posts.forEach((post) =>{
+const newPost = document.createElement('div')
 
-main.innerHTML += `<div class="post">
+newPost.innerHTML += `<div class="post">
 <div class="post__header">
     <div class="post-meta">                    
         <div class="post-meta__icon">
@@ -127,4 +128,7 @@ main.innerHTML += `<div class="post">
     </div> 
 </div>            
 </div>`
+newPost._postID = `${post.id}`
+console.log(newPost);
+main.append(newPost)
 })

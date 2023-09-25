@@ -32,6 +32,7 @@ h1 {
 }
 
 .post { 
+  margin-bottom: 20px;
   padding: 16px;
   background-color: white;
 }
