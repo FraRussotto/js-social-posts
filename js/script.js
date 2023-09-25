@@ -56,48 +56,21 @@ const posts = [
     }
 ];
 
-// Recuperiamo il collegamento col container attraverso il queryselector.
+// Recuperiamo gli elementi di collegamento col container attraverso queryselector.
 
 // Attraverso l'innerHtml del codice html, inseriamo un singolo post.
 
-const main = document.querySelector('.posts-list');
-
-// main.innerHTML = `<div class="post">
-// <div class="post__header">
-//     <div class="post-meta">                    
-//         <div class="post-meta__icon">
-//             <img class="profile-pic" src="https://unsplash.it/300/300?image=15" alt="Phil Mangione">                    
-//         </div>
-//         <div class="post-meta__data">
-//             <div class="post-meta__author">Phil Mangione</div>
-//             <div class="post-meta__time">4 mesi fa</div>
-//         </div>                    
-//     </div>
-// </div>
-// <div class="post__text">Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.</div>
-// <div class="post__image">
-//     <img src="https://unsplash.it/600/300?image=171" alt="">
-// </div>
-// <div class="post__footer">
-//     <div class="likes js-likes">
-//         <div class="likes__cta">
-//             <a class="like-button  js-like-button" href="#" data-postid="1">
-//                 <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
-//                 <span class="like-button__label">Mi Piace</span>
-//             </a>
-//         </div>
-//         <div class="likes__counter">
-//             Piace a <b id="like-counter-1" class="js-likes-counter">80</b> persone
-//         </div>
-//     </div> 
-// </div>            
-// </div>`
-
 // Rendiamo dinamica la creazione dei psot attraverso gli oggetti dell'array fornito creando un ciclo che ad ogni passaggio, creare un nuovo post che va ad inserire nel main.
+
+// Aggiungiamo l'evento click al bottone like che andrà ad aumentare ad aumentare il counter di like e cambierà colore al bottone.
+
+
+/* ELEMENTS */
+const main = document.querySelector('.posts-list');
+const btnLike = document.querySelector('.like-button');
 
 posts.forEach((post) =>{
 const newPost = document.createElement('div')
-
 newPost.innerHTML += `<div class="post">
 <div class="post__header">
     <div class="post-meta">                    
@@ -117,7 +90,7 @@ newPost.innerHTML += `<div class="post">
 <div class="post__footer">
     <div class="likes js-likes">
         <div class="likes__cta">
-            <a class="like-button  js-like-button" href="#" data-postid="1">
+            <a class="like-button js-like-button" href="#" data-postid="1">
                 <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                 <span class="like-button__label">Mi Piace</span>
             </a>
@@ -129,6 +102,13 @@ newPost.innerHTML += `<div class="post">
 </div>            
 </div>`
 newPost._postID = `${post.id}`
-console.log(newPost);
+btnLike.addEventListener('click', function(){
+  console.log('ciao');
+});
 main.append(newPost)
 })
+
+
+// function likePlus(){
+//   newPost.likes++;
+// }
