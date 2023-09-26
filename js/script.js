@@ -149,8 +149,27 @@ const likeCounters = document.querySelectorAll('.js-likes-counter')
 // Ciclo l'array likeButton per inserire l'id e l'eventListener
 likeButton.forEach((btn, index) => {
     btn._id = posts[index].id
-    console.log(btn._id);
     btn._index = index
-    console.log(btn._index);
-    btn.addEventListener('click', function(){})
+    btn.addEventListener('click', function(){
+
+        // Con preventDefault evito il caricamento a stesso dell'Href.
+        event.preventDefault();
+
+        // Aggiungo o tolgo la classe al bottone like attraverso l'operatore ternario sopra.
+        
+        this.classList.toggle('like-button--liked'); 
+
+        // Col metodo Find, trovo soltanto un elemento che soddisfi o meno la condizione inserita.
+        const postSelected = posts.find( post => post.id === this._id)
+
+        if(userLikes.includes(this._id)){
+            userLikes = userLikes.filter( likeId => likeId !== this._id)
+            postSelected.likes--;
+        } else{
+            postSelected.likes++;
+            userLikes.push(this._id)
+        }
+
+        likeCounters[this._index].innerText = postSelected.likes;
+    })
 })
