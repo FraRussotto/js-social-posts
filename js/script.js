@@ -60,7 +60,7 @@ const posts = [
 
 // Attraverso l'innerHtml del codice html, inseriamo un singolo post.
 
-// Rendiamo dinamica la creazione dei psot attraverso gli oggetti dell'array fornito creando un ciclo che ad ogni passaggio, creare un nuovo post che va ad inserire nel main.
+// Rendiamo dinamica la creazione dei post attraverso gli oggetti dell'array fornito creando un ciclo che ad ogni passaggio, creare un nuovo post che va ad inserire nel main.
 
 // Aggiungiamo l'evento click al bottone like che andrà ad aumentare ad aumentare il counter di like e cambierà colore al bottone.
 
@@ -68,6 +68,7 @@ const posts = [
 /* ELEMENTS */
 const main = document.querySelector('.posts-list');
 
+let userLikes = [];
 
 posts.forEach((post) =>{
     main.innerHTML += newCard(post)
@@ -85,7 +86,7 @@ function newCard(post){
     <div class="post__header">
         <div class="post-meta">                    
             <div class="post-meta__icon">
-                ${author.image ? getAuthorImageTag(author) : getAuthorInitialsTag(author)} 
+                ${author.image ? getAuthorImg(author) : getAuthorInitials(author)} 
             </div>
             <div class="post-meta__data">
                 <div class="post-meta__author">${author.name}</div>
@@ -113,23 +114,30 @@ function newCard(post){
     </div>`
 }
 
+
 function isPostLiked(id){
     // ciclo l'array per vedere se l'id del bottone cliccato è incluso ottenendo un valore booleano.
     return userLikes.includes(id)
 }
 
+// Creo una funzione che vada a prendere le immagini dall'array sempre attraverso una const destrutturata.
 
+function getAuthorImg(author){
+    const {name, image} = author
+    return `<img class="profile-pic" src="${image}" alt="${name}"> `
+}
 
-console.log(posts.likes);
+// In caso di immagine author mancante, creiamo una funzione che ci faccia comparire soltanto le iniziali dell'autore.
 
-let likePlus = document.querySelector('.likes__counter .js-likes-counter');
-console.log(likePlus);
-const btnLike = document.querySelectorAll('.like-button');
-console.log(btnLike);
-btnLike.forEach((btn) => {
-    btn.addEventListener('click', function(){
-        quantity = (posts.likes) + 1;
-        console.log(quantity);
-    })
-})
+function getAuthorInitials(author){
+    const { name } = author;
+    // Split per separare le lettere della stringa, map per creare un array con gli elementi che corrispondano alla nostra ricerca e poi in un'altra const le riuniamo con join.
+    const letters = name.split(' ').map(nameSplit => nameSplit [0]);
+    const initials = letters.join('');
+    return `
+    <div class="profile-pic-default"
+        <span>${initials}</span>
+    </div>`
+}
+
 
