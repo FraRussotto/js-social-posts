@@ -113,6 +113,11 @@ function newCard(post){
     </div>`
 }
 
+function isPostLiked(id){
+    // ciclo l'array per vedere se l'id del bottone cliccato è incluso ottenendo un valore booleano.
+    return userLikes.includes(id)
+}
+
 
 
 console.log(posts.likes);
@@ -127,3 +132,4 @@ btnLike.forEach((btn) => {
         console.log(quantity);
     })
 })
+
