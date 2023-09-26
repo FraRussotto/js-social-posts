@@ -141,3 +141,16 @@ function getAuthorInitials(author){
 }
 
 
+// Per il click del bottone like e l'aumento del numero di like, creiamo 2 array con querySelector che puntano a questi 2 elementi complementari e quindi avranno gli stessi id.
+
+const likeButton = document.querySelectorAll('.js-like-button')
+const likeCounters = document.querySelectorAll('.js-likes-counter')
+
+// Ciclo l'array likeButton per inserire l'id e l'eventListener
+likeButton.forEach((btn, index) => {
+    btn._id = posts[index].id
+    console.log(btn._id);
+    btn._index = index
+    console.log(btn._index);
+    btn.addEventListener('click', function(){})
+})
